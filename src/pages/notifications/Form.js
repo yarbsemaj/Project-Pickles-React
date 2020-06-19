@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, Button, FormCheck, Form, Card } from 'react-bootstrap'
+import { Button, Form, Card } from 'react-bootstrap'
 import FilterForm from "./FilterForm"
 
 
@@ -27,7 +27,7 @@ class NotificationForm extends React.Component {
     setFilter(index, field, value) {
         let { notification } = this.state;
         console.log("Set field")
-        if (field == "field") {
+        if (field === "field") {
             notification.filters[index] = {}
         }
         notification.filters[index][field] = value

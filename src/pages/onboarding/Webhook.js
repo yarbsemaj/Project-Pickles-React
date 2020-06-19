@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux'
 import { setUser, setLoading } from '../../actions'
 import makeRequest from "../../modules/backendRequest"
-import { FormGroup, Button, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 
 
 class Login extends React.Component {
@@ -37,7 +37,7 @@ class Login extends React.Component {
                 <p>Setup for IFTTT Webhook id</p>
                 <Form.Control placeholder="Webhook ID" onChange={(webhook) => this.webhookChange(webhook.target.value)}/>
                 <br/>
-                <Button block={true} disabled={webhook == ""} onClick={()=>this.saveWebhook()}>Save</Button>
+                <Button block={true} disabled={webhook === ""} onClick={()=>this.saveWebhook()}>Save</Button>
             </div>);
     }
 }

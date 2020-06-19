@@ -1,5 +1,4 @@
 import React from "react";
-import config from "../../config"
 import Form from "./Form"
 import { connect } from 'react-redux'
 import validate from "../../validator/notification"
@@ -8,10 +7,6 @@ import { Alert, Button, Card } from 'react-bootstrap'
 import { setLoading } from '../../actions'
 
 class NotificationEdit extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     editNotification(notification) {
         let { history, setLoading } = this.props
         let validateResponse = validate(notification)
@@ -32,7 +27,7 @@ class NotificationEdit extends React.Component {
         console.log(this.props)
         console.log(notifications)
         notifications.notifications.forEach(notification => {
-            if (notification.id == id) {
+            if (notification.id === id) {
                 this.setState({ notification: notification })
             }
         });

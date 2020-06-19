@@ -3,13 +3,7 @@ import { Jumbotron } from 'react-bootstrap'
 import SetWebhook from './Webhook'
 import Login from './Login'
 
-
-
 class OnboardingFrame extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const token = localStorage.getItem('token');
 

@@ -1,7 +1,6 @@
 import React from "react";
-import config from "../../config"
 import { connect } from 'react-redux'
-import { ListGroup, Button, Card, Form } from 'react-bootstrap'
+import { ListGroup, Button, Card } from 'react-bootstrap'
 import { setNotifications, setLoading } from '../../actions'
 import Description from './Description'
 import makeRequest from "../../modules/backendRequest"
@@ -21,7 +20,7 @@ class NotificationList extends React.Component {
     }
 
     componentWillMount() {
-        let { webhook, setLoading } = this.props
+        let { setLoading } = this.props
         setLoading(true);
         makeRequest('notification', 'GET', true)
             .then(

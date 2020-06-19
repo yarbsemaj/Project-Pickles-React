@@ -1,5 +1,5 @@
 export default function(formData){
-    if(!(formData.name && formData.name != "")){
+    if(!(formData.name && formData.name !== "")){
         return "No name specified";
     }
     if(!formData.filters.length){
@@ -9,11 +9,11 @@ export default function(formData){
     let filterResponse = ""
 
     formData.filters.forEach(filter => {
-        if(!("field" in filter && "filter" in filter && "value" in filter && filter.value != "") && filterResponse == ""){
+        if(!("field" in filter && "filter" in filter && "value" in filter && filter.value !== "") && filterResponse === ""){
             filterResponse += "Malformed Filter"
         }
     });
-    if(filterResponse != ""){
+    if(filterResponse !== ""){
         return filterResponse
     }
     return true

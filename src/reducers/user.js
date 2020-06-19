@@ -1,5 +1,3 @@
-import { act } from "react-dom/test-utils"
-
 const user = (state = [], action) => {
   console.log(action)
     switch (action.type) {

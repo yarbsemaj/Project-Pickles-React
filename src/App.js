@@ -7,9 +7,12 @@ import {
     useParams,
 } from "react-router-dom";
 
-import { Container, Navbar, Nav } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+
+import BuiltNavBar from './pages/NavBar'
 
 import Home from './pages/Home'
+import UserEdit from './pages/users/Edit'
 import NotificationEdit from './pages/notifications/Edit'
 import OnboardingFrame from './pages/onboarding/Frame'
 import NotificationAdd from './pages/notifications/Add'
@@ -18,14 +21,13 @@ import { setUser, setLoading } from './actions'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import logo from './logo.jpeg'
 
 
 class App extends React.Component {
-    logout(){
-        let {setLoading, setUser} = this.props;
+    logout() {
+        let { setLoading, setUser } = this.props;
         setLoading(true)
-        setUser({webhook: ""})
+        setUser({ webhook: "" })
         localStorage.removeItem("token")
         setLoading(false)
     }
@@ -34,16 +36,7 @@ class App extends React.Component {
         return (
             <div>
                 {loading ? <Loading></Loading> : null}
-                <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="/"> <img src={logo} width="30" height="30" class="rounded d-inline-block align-top" alt=""/> Project Pickles</Navbar.Brand>
-                    <Nav className="navbar-right">
-                        {user.name?
-                            <Nav.Link onClick={() => { this.logout() }}>
-                                {user.name} <img src={user.picture} width="30" height="30" class="rounded d-inline-block align-top" alt=""/>
-                                </Nav.Link>:null
-                        }
-                    </Nav>
-                </Navbar>
+                <BuiltNavBar></BuiltNavBar>
                 <Container>
                     {localStorage.getItem("token") && user.webhook ?
                         <Router>
@@ -54,6 +47,9 @@ class App extends React.Component {
                                     )} />
                                     <Route path="/notifications" render={({ history }) => (
                                         <NotificationAdd history={history} />
+                                    )} />
+                                    <Route path="/user" render={({ history }) => (
+                                        <UserEdit history={history} />
                                     )} />
                                     <Route path="/" render={({ history }) => (
                                         <Home history={history} />
@@ -80,7 +76,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
-    setLoading: loading=>dispatch(setLoading(loading))
+    setLoading: loading => dispatch(setLoading(loading))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
